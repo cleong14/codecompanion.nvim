@@ -145,10 +145,32 @@ First think step-by-step - describe your plan for what to build in pseudocode, w
       mapping = "parameters.options",
       type = "number",
       optional = true,
-      default = 0.8,
+      default = 0.2,
       desc = "What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.",
       validate = function(n)
         return n >= 0 and n <= 2, "Must be between 0 and 2"
+      end,
+    },
+    top_p = {
+      order = 3,
+      mapping = "parameters.options",
+      type = "number",
+      optional = true,
+      default = 0.1,
+      desc = "An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.",
+      validate = function(n)
+        return n >= 0 and n <= 1, "Must be between 0 and 1"
+      end,
+    },
+    num_ctx = {
+      order = 4,
+      mapping = "parameters.options",
+      type = "number",
+      optional = true,
+      default = 16384,
+      desc = "Sets the size of the context window used to generate the next token. (Default: 2048)",
+      validate = function(n)
+        return n >= 2048, "Must be greater than or equal to 2048"
       end,
     },
   },
