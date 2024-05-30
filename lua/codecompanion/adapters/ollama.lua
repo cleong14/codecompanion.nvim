@@ -126,7 +126,7 @@ First think step-by-step - describe your plan for what to build in pseudocode, w
       mapping = "parameters",
       type = "enum",
       desc = "ID of the model to use.",
-      default = "dolphin-mistral-code-companion",
+      default = "dolphin-mistral-7b-v2.8-q6_K-uncensored",
       choices = get_ollama_choices(),
     },
     temperature = {
